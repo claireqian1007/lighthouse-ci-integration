@@ -16,6 +16,5 @@ jobs:
           npm run build
       - name: run Lighthouse CI
         run: |
-          npm install -g @lhci/cli@0.13.x
-          npm install -g puppeteer
-          lhci autorun || echo "LHCI failed!"
+          npm install @lhci/cli@0.13.x
+          npx lhci autorun || echo "LHCI failed!"

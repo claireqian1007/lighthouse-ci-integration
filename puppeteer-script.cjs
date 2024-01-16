@@ -7,13 +7,11 @@
 module.exports = async (browser, context) => {
   // launch browser for LHCI
   const page = await browser.newPage();
-  console.log(context.url);
-  await page.goto(context.url);
-  const element = await page.waitForSelector("a");
-  await element.click();
-  await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 10000 }); //only support soft navigation
-  // const button = await page.waitForSelector("button");
-  // await button.click();
+  await page.goto("http://localhost:5173/home");
+  const mockLoginBtn = await page.waitForSelector("button");
+  const navigateBtn = await page.waitForSelector("a");
+  await mockLoginBtn.click();
+  await Promise.all([page.waitForSelector(".card"), navigateBtn.click()]);
   // close session for next run
   await page.close();
 };

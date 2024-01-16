@@ -3,7 +3,7 @@ module.exports = {
     collect: {
       numberOfRuns: 3, //lighthouse run times to return html
       startServerCommand: "npm run dev", //start a server
-      url: ["http://127.0.0.1:5173/"],
+      url: "http://localhost:5173/home",
       settings: {
         onlyCategories: [
           "performance",
@@ -15,7 +15,7 @@ module.exports = {
       },
       puppeteerScript: "./puppeteer-script.cjs",
       puppeteerLaunchOptions: {
-        args: ['--no-sandbox','--disable-setuid-sandbox'],
+        args: ["--no-sandbox", "--disable-setuid-sandbox"],
       },
     },
     assert: {
