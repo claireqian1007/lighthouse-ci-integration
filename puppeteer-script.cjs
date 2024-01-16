@@ -11,7 +11,7 @@ module.exports = async (browser, context) => {
   await page.goto(context.url);
   const element = await page.waitForSelector("a");
   await element.click();
-  // await page.waitForNavigation(); //only support soft navigation
+  await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 10000 }); //only support soft navigation
   // const button = await page.waitForSelector("button");
   // await button.click();
   // close session for next run
