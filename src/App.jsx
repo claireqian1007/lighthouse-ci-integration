@@ -1,6 +1,11 @@
 import viteLogo from "/vite.svg";
-import { useState } from "react";
-import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
+import { useEffect, useState } from "react";
+import {
+  createBrowserRouter,
+  Link,
+  RouterProvider,
+  useNavigate,
+} from "react-router-dom";
 
 import reactLogo from "./assets/react.svg";
 
@@ -8,7 +13,11 @@ import "./App.css";
 
 function Homepage() {
   const [count, setCount] = useState(0);
-
+  const navigate = useNavigate();
+  const isLoggedIn = localStorage.getItem("loginStatus");
+  useEffect(() => {
+    if (!isLoggedIn) navigate("/");
+  }, []);
   return (
     <>
       <div>
@@ -33,13 +42,15 @@ function Homepage() {
   );
 }
 
-
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
       <div>
         <h1>Hello World</h1>
+        <button onClick={() => localStorage.setItem("loginStatus", true)}>
+          mock login
+        </button>
         <Link to="home">Go to Home</Link>
       </div>
     ),

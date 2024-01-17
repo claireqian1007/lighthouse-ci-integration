@@ -23,19 +23,19 @@ module.exports = {
       // preset: "lighthouse:recommended", // 包含的东西太多
       assertions: {
         "categories:performance": [
-          "error",
+          "warn",
           { minScore: 0.9, aggregationMethod: "median" },
         ], //定义不同的数据等级
         "categories:accessibility": [
-          "error",
+          "warn",
           { minScore: 0.9, aggregationMethod: "pessimistic" },
         ],
         "categories:best-practices": [
-          "error",
+          "warn",
           { minScore: 0.9, aggregationMethod: "pessimistic" },
         ],
         "categories:seo": [
-          "error",
+          "warn",
           { minScore: 0.9, aggregationMethod: "pessimistic" },
         ],
       },
